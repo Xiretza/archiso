@@ -14,15 +14,17 @@ Device: `/dev/sdx`
 
 # Installing
 
-1. Write contents of ISO to `/mnt/arch`
+1. Write contents of Arch ISO to `/mnt/arch`
 
-2. `woeusb win.iso /dev/sdx[n]` (= `/mnt/win`)
+2. `woeusb -p win.iso /dev/sdx[n]` (= `/mnt/win`)
 
 3. `mv /mnt/win/efi/boot/{bootx64,windows}.efi`
 
 4. Install grub:
-   `grub-install --target=x86_64-efi --efi-directory=/mnt/arch --boot-directory=/mnt/arch --removable --recheck`
-   `grub-install --target=i386-pc --boot-directory=/mnt/arch --recheck /dev/sdx`
+   ```
+   grub-install --target=x86_64-efi --efi-directory=/mnt/arch --boot-directory=/mnt/arch --removable --recheck
+   grub-install --target=i386-pc --boot-directory=/mnt/arch --recheck /dev/sdx
+   ```
 
 5. Copy grub config
    `cp archiso/grub.cfg /mnt/arch/grub/`
