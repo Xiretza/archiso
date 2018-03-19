@@ -1,0 +1,13 @@
+--- archiso	2017-11-01 23:33:16.238995465 +0100
++++ archiso	2018-03-01 17:06:00.472952176 +0100
+@@ -55,8 +55,8 @@
+     local sfs_dev
+ 
+     if [[ "${copytoram}" == "y" ]]; then
+-        msg -n ":: Copying squashfs image to RAM..."
+-        if ! cp "${img}" "/run/archiso/copytoram/${img_fullname}" ; then
++        msg ":: Copying squashfs image to RAM..."
++        if ! pv "${img}" > "/run/archiso/copytoram/${img_fullname}" ; then
+             echo "ERROR: while copy '${img}' to '/run/archiso/copytoram/${img_fullname}'"
+             launch_interactive_shell
+         fi
